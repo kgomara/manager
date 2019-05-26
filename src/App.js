@@ -12,6 +12,7 @@ import {
   storageBucket,
   messageSenderId
 } from "../src/config";
+import LoginForm from "./components/LoginForm";
 
 class App extends Component {
   componentWillMount() {
@@ -25,12 +26,11 @@ class App extends Component {
 
     firebase.initializeApp(config);
   }
+
   render() {
     return (
       <Provider store={createStore(reducers)}>
-        <View>
-          <Text>Hello!</Text>
-        </View>
+        <LoginForm />
       </Provider>
     );
   }
