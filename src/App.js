@@ -1,10 +1,17 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import firebase from "firebase";
+import ReduxThunk from "redux-thunk";
 
 import reducers from "./reducers";
+import LoginForm from "./components/LoginForm";
+
+/*
+I use GitHub, which hackers harvest for private keys, etc. The following secrets are
+in a confg.js file, which is excluded by my .gitignore, thus hackers can't get it.  I 
+manage this (and similar files) by proprietary means.
+ */
 import {
   apiKey,
   authDomain,
@@ -12,7 +19,6 @@ import {
   storageBucket,
   messageSenderId
 } from "../src/config";
-import LoginForm from "./components/LoginForm";
 
 class App extends Component {
   componentWillMount() {
@@ -28,8 +34,9 @@ class App extends Component {
   }
 
   render() {
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={store}>
         <LoginForm />
       </Provider>
     );
