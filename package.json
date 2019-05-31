@@ -9,8 +9,11 @@
   "dependencies": {
     "firebase": "^6.0.4",
     "react": "16.8.3",
+    "react-addons-pure-render-mixin": "15.0.2",
     "react-native": "0.59.8",
+    "react-native-router-flux": "^4.0.6",
     "react-redux": "^7.0.3",
+    "react-static-container": "1.0.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
